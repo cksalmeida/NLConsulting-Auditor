@@ -1,0 +1,43 @@
+# Secrets — NUNCA commitar
+.env
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dados de teste — não commitar os 1.000 arquivos do lote
+arquivos_nf.zip
+arquivos_nf/
+DOC_*.txt
+
+# Saídas geradas
+auditor_documentos_*.csv
+auditor_anomalias_*.csv
+auditor_completo_*.xlsx
+auditor_log_*.csv
+
+
+# Claude
+CLAUDE.md
+
+# Entrega interna — não expor no repositório público
+DEPLOY.md
+powerbi/
