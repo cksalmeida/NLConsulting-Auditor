@@ -16,7 +16,7 @@ consumo no **Power BI**.
 | Item | URL |
 | --- | --- |
 | Aplicação online | *(preencher após deploy no Streamlit Cloud)* |
-| Repositório GitHub | *(preencher após push)* |
+| Repositório GitHub | *https://github.com/cksalmeida/NLConsulting-Auditor* |
 | Dashboard Power BI | *(preencher após publicação)* |
 | Relatório de anomalias | Ver seção "Relatório de anomalias detectadas" neste README |
 
@@ -78,7 +78,7 @@ auditor-ia/
 ### 1. Clone e instale dependências
 
 ```bash
-git clone https://github.com/<seu-usuario>/auditor-ia.git
+git clone https://github.com/cksalmeida/NLConsulting-Auditor.git
 cd auditor-ia
 python -m venv .venv
 source .venv/bin/activate          # Linux/Mac
