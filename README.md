@@ -1,7 +1,6 @@
 # 🔍 Auditor de Documentos com IA
 
-**NLConsulting · Processo Seletivo 2026**
-Estagiário Full Stack Developer (SaaS & AI)
+**Estagiário Full Stack Developer (SaaS & AI) · Processo Seletivo 2026**
 
 Aplicação web que recebe um lote de documentos financeiros em `.txt`
 (notas fiscais, recibos, faturas, contratos aditivos), extrai os campos
@@ -119,23 +118,6 @@ python tests/test_anomaly_detector.py   # 23 ✅
 python tests/test_extractor.py          # 18 ✅
 python tests/test_audit_log.py          # 12 ✅
 ```
-
----
-
-## ☁️ Deploy no Streamlit Community Cloud (gratuito)
-
-1. **Suba o código pra um repositório público no GitHub** (sem a chave!).
-2. Vá em [share.streamlit.io](https://share.streamlit.io) e conecte sua conta GitHub.
-3. Clique em **New app** → escolha o repo → aponte para `app.py`.
-4. Na tela de configuração, clique em **Advanced settings → Secrets** e cole:
-   ```toml
-   ANTHROPIC_API_KEY = "sk-ant-api03-..."
-   ```
-5. **Deploy**. Em ~2 minutos você tem a URL pública.
-
-> **Segurança:** a chave fica apenas nos secrets do Streamlit Cloud, nunca
-> no código. O frontend nunca a vê — todas as chamadas à Claude API saem
-> do backend Python.
 
 ---
 
