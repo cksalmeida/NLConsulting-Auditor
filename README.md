@@ -43,7 +43,7 @@ consumo no **Power BI**.
 ```
 
 **Stack:** Streamlit (frontend + orquestração) · Python 3.11+ ·
-Anthropic Claude API (`claude-sonnet-4-5`) · pandas · openpyxl ·
+Anthropic Claude API (`claude-sonnet-4-6`) · pandas · openpyxl ·
 Power BI Desktop (dashboard offline publicável).
 
 ---
@@ -66,8 +66,6 @@ auditor-ia/
 │   ├── test_anomaly_detector.py  # 23 testes unitários
 │   ├── test_extractor.py         # 18 testes unitários
 │   └── test_audit_log.py         # 12 testes unitários
-├── powerbi/
-│   └── INSTRUCOES_POWERBI.md     # Guia passo a passo do dashboard
 └── README.md                     # Este arquivo
 ```
 
@@ -79,7 +77,7 @@ auditor-ia/
 
 ```bash
 git clone https://github.com/cksalmeida/NLConsulting-Auditor.git
-cd auditor-ia
+cd NLConsulting-Auditor
 python -m venv .venv
 source .venv/bin/activate          # Linux/Mac
 # .venv\Scripts\activate           # Windows
@@ -176,7 +174,7 @@ truncados, mojibake). Também reduz o custo da API em ~99%.
 
 ### Por que prompt versionado?
 
-Cada linha do log de auditoria carrega `versao_prompt` (atualmente `v1.2.0`).
+Cada linha do log de auditoria carrega `versao_prompt` (atualmente `v1.3.0`).
 Se mudarmos o prompt e a taxa de detecção oscilar, conseguimos rastrear a
 regressão. É auditabilidade de ponta a ponta.
 
@@ -193,8 +191,9 @@ Em `extractor.py::ClaudeExtractor.extract`:
 
 ### Tratamento de arquivos problemáticos
 
-- **Encoding**: tenta UTF-8 → fallback latin-1; remove bytes de controle
-  (`\x00-\x08`, `\x7f-\x9f`) e marca `encoding_issue=True`.
+- **Encoding**: tenta UTF-8 → fallback cp1252 (cobre caracteres Windows
+  0x80–0x9F como €, que latin-1 trata como controle); remove bytes de
+  controle (`\x00-\x08`, `\x7f-\x9f`) e marca `encoding_issue=True`.
 - **Campos truncados** (ex.: `STATUS: PAG`): detectados pela regra `STATUS_INVALIDO`
   (vocabulário fechado) e `CAMPO_AUSENTE` (campos críticos faltando).
 - **Mojibake** (`Ã©` em vez de `é`): regex `Ã[©§£¡]` aciona a IA, que infere o valor original.
@@ -252,11 +251,11 @@ Cada registro do log tem:
 ```csv
 timestamp,arquivo,evento,detalhe,regra,campo_evidencia,confianca,versao_prompt,modelo_ia,latencia_ms
 2026-04-17T14:23:01Z,DOC_0020.txt,READ,"Lido 327 bytes; encoding_ok=True",,,,,,
-2026-04-17T14:23:01Z,DOC_0020.txt,EXTRACT,"Fonte=regex; obs=",,,Alto,v1.2.0,-,1
+2026-04-17T14:23:01Z,DOC_0020.txt,EXTRACT,"Fonte=regex; obs=",,,Alto,v1.3.0,-,1
 2026-04-17T14:23:04Z,DOC_0020.txt,DETECT,"NF NF-24322 aparece em 2 arquivos",NF_DUPLICADA,"NUMERO_DOCUMENTO, FORNECEDOR",Alto,,,
 ```
 
-Eventos registrados: `READ`, `EXTRACT`, `DETECT`, `ERROR`, `EXPORT`.
+Eventos registrados: `READ`, `EXTRACT`, `DETECT`, `ERROR`, `EXPORT`, `SUMMARY`.
 Exportável em CSV (direto na UI) ou JSONL (programático).
 
 ---
@@ -266,7 +265,7 @@ Exportável em CSV (direto na UI) ou JSONL (programático).
 - [x] URL pública funcional (ver topo do README após deploy)
 - [x] Repositório GitHub com histórico de commits
 - [x] CSV + Excel exportáveis pela ferramenta
-- [x] Dashboard Power BI (ver `powerbi/INSTRUCOES_POWERBI.md`)
+- [x] Dashboard Power BI (instruções enviadas separadamente)
 - [x] Log de auditoria exportável separadamente
 - [x] Tratamento de erros de IA (rate limit, JSON malformado, timeout)
 - [x] Tratamento de arquivos problemáticos (encoding, truncados, ausentes)
