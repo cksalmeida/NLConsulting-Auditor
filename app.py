@@ -593,14 +593,6 @@ if st.session_state.processed:
             help="Formato JSONL — uma linha JSON por evento. Ideal para ingestão em Splunk, Datadog, Elastic.",
         )
 
-    st.markdown("---")
-    with st.expander("ℹ️ Próximo passo: dashboard Power BI"):
-        st.markdown("""
-        1. Baixe o Excel acima (**auditor_completo_*.xlsx**).
-        2. Abra o Power BI Desktop → **Obter Dados** → **Excel** → selecione o arquivo.
-        3. Importe as 3 abas: `documentos`, `anomalias`, `audit_log`.
-        4. Siga o guia em `powerbi/INSTRUCOES_POWERBI.md` no repositório.
-        """)
 
 
 # =================================================================
