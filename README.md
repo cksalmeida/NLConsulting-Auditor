@@ -1,6 +1,6 @@
 # 🔍 Auditor de Documentos com IA
 
-**NLConsulting · Processo Seletivo 2026 · Tarefa de Casa**
+**NLConsulting · Processo Seletivo 2026**
 Estagiário Full Stack Developer (SaaS & AI)
 
 Aplicação web que recebe um lote de documentos financeiros em `.txt`
@@ -257,22 +257,6 @@ timestamp,arquivo,evento,detalhe,regra,campo_evidencia,confianca,versao_prompt,m
 
 Eventos registrados: `READ`, `EXTRACT`, `DETECT`, `ERROR`, `EXPORT`, `SUMMARY`.
 Exportável em CSV (direto na UI) ou JSONL (programático).
-
----
-
-## 🎯 Checklist de entregáveis
-
-- [x] URL pública funcional (ver topo do README após deploy)
-- [x] Repositório GitHub com histórico de commits
-- [x] CSV + Excel exportáveis pela ferramenta
-- [x] Dashboard Power BI (instruções enviadas separadamente)
-- [x] Log de auditoria exportável separadamente
-- [x] Tratamento de erros de IA (rate limit, JSON malformado, timeout)
-- [x] Tratamento de arquivos problemáticos (encoding, truncados, ausentes)
-- [x] Segurança (chave nunca no frontend, apenas via env/secrets)
-- [x] Testes unitários (53 testes em 3 módulos, todos passando)
-- [x] README com arquitetura e decisões técnicas
-- [x] Relatório de anomalias encontradas
 
 ---
 
